@@ -5,14 +5,16 @@ import java.io.OutputStream;
 
 /**
  * RESP协议
+ * 详见； https://redis.io/topics/protocol
  */
 public class Protocol {
-    public static final String DOLLAR_BYTE = "$";
-    public static final String ASTERISK_BYTE = "*";
+    // jedis后来将这些常量优化为byte，在os进行写出的时候对其进行char转型
+    private static final String DOLLAR_BYTE = "$";
+    private static final String ASTERISK_BYTE = "*";
     public static final byte PLUS_BYTE = 43;
     public static final byte MINUS_BYTE = 45;
     public static final byte COLON_BYTE = 58;
-    public static final String BLANK_BYTE = "\r\n";
+    private static final String BLANK_BYTE = "\r\n";
 
     /**
      * 拼接RESP 并 发送write
@@ -32,7 +34,7 @@ public class Protocol {
             // 1.5 key/value
             stringBuffer.append(new String(arg)).append(BLANK_BYTE);
         }
-        // 响应
+        // 写出到服务端
         try {
             os.write(stringBuffer.toString().getBytes());
         } catch (IOException e) {
@@ -46,5 +48,5 @@ public class Protocol {
      * 定义一个枚举类 存放命令
      */
     public static  enum Command{
-        SET , GET , KEYS,APPEND
+        SET , GET , KEYS, APPEND
     }}

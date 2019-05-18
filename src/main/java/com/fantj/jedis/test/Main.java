@@ -2,9 +2,10 @@ package com.fantj.jedis.test;
 
 import com.fantj.jedis.client.Client;
 import org.junit.Test;
-import redis.clients.jedis.Jedis;
 
-
+/**
+ * 测试我们自己写的客户端
+ */
 public class Main {
     private Client client = new Client("www.fantj.top",6380);
     @Test

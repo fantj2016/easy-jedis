@@ -3,6 +3,10 @@ package com.fantj.jedis.client;
 import com.fantj.jedis.connect.Connection;
 import com.fantj.jedis.protocol.Protocol;
 
+/**
+ * 客户端
+ * 给开发人员使用提供API
+ */
 public class Client {
     private Connection connection;
     public Client(String host, int port){

@@ -6,6 +6,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
+/**
+ * 连接类
+ * 在这里进行创建连接并处理IO请求，用inputStream进行数据回显，
+ * 提供OutputStream给协议层，以便让其给服务端发送命令
+ */
 public class Connection {
     private String host = "localhost";
     private int port = 6379;
